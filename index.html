@@ -11,6 +11,8 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            /* Prevent scrolling on the body itself */
+            overflow: hidden;
         }
         .slide {
             transition: opacity 0.5s ease-in-out;
@@ -29,304 +31,344 @@
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-4">
+<body class="bg-gray-900 text-white flex items-center justify-center h-screen">
 
-    <div id="presentation-container" class="w-full max-w-4xl aspect-video bg-gray-800 rounded-lg shadow-2xl flex flex-col relative overflow-hidden">
+    <!-- Main container now uses screen width/height for full compatibility -->
+    <div id="presentation-container" class="w-screen h-screen bg-gray-800 flex flex-col relative overflow-hidden">
         
-        <div id="slides-wrapper" class="flex-grow flex items-center justify-center p-4 md:p-8 overflow-hidden">
+        <!-- Slides wrapper with responsive padding -->
+        <div id="slides-wrapper" class="flex-grow flex items-center justify-center p-4 sm:p-6 md:p-8 overflow-y-auto">
             <!-- Slide 1 -->
             <div class="slide w-full h-full flex flex-col items-center justify-center text-center">
-                <div class="flex-shrink-0">
-                    <h1 class="text-4xl md:text-6xl font-black text-cyan-300 tracking-tight">An Engineer's Dive into the Underwater World</h1>
-                    <p class="mt-4 text-xl md:text-2xl text-gray-300">A Technical Introduction to Freediving & Scuba Diving</p>
-                </div>
-                <div class="flex-grow w-full flex items-center justify-center min-h-0 mt-4">
-                    <iframe src="https://drive.google.com/file/d/1zjbfzIbhLo3H16PK7hTl_R7sPNbj6Z7u/preview" class="rounded-lg shadow-lg w-full max-w-md h-full" allow="autoplay"></iframe>
+                <!-- Content wrapper to constrain width on very large screens -->
+                <div class="w-full max-w-7xl mx-auto flex flex-col items-center justify-center flex-grow">
+                    <div class="flex-shrink-0">
+                        <!-- Responsive font sizes for mobile, tablet, and desktop -->
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-cyan-300 tracking-tight">An Engineer's Dive into the Underwater World</h1>
+                        <p class="mt-4 text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300">A Technical Introduction to Freediving & Scuba Diving</p>
+                    </div>
+                    <div class="flex-grow w-full flex items-center justify-center min-h-0 mt-4 md:mt-8">
+                        <iframe src="https://drive.google.com/file/d/1zjbfzIbhLo3H16PK7hTl_R7sPNbj6Z7u/preview" class="rounded-lg shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg h-full" allow="autoplay"></iframe>
+                    </div>
                 </div>
             </div>
 
             <!-- Slide 2 -->
             <div class="slide w-full h-full flex-col items-center justify-center text-center hidden">
-                <h2 class="text-3xl md:text-5xl font-bold mb-8">What is This All About?</h2>
-                <div class="grid md:grid-cols-2 gap-8 text-left">
-                    <div class="bg-gray-700 p-6 rounded-lg">
-                        <h3 class="text-2xl font-bold text-cyan-300 mb-2">Freediving</h3>
-                        <p class="text-lg">The practice of holding your breath when diving underwater without breathing equipment. It's a journey into your own mind and body's capabilities.</p>
+                <div class="w-full max-w-6xl mx-auto">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8">What is This All About?</h2>
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-8 text-left">
+                        <div class="bg-gray-700 p-4 md:p-6 rounded-lg">
+                            <h3 class="text-xl md:text-2xl font-bold text-cyan-300 mb-2">Freediving</h3>
+                            <p class="text-base md:text-lg">The practice of holding your breath when diving underwater without breathing equipment. It's a journey into your own mind and body's capabilities.</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 md:p-6 rounded-lg">
+                            <h3 class="text-xl md:text-2xl font-bold text-cyan-300 mb-2">Scuba Diving</h3>
+                            <p class="text-base md:text-lg">Using a Self-Contained Underwater Breathing Apparatus to breathe underwater for extended periods, allowing for prolonged exploration.</p>
+                        </div>
                     </div>
-                    <div class="bg-gray-700 p-6 rounded-lg">
-                        <h3 class="text-2xl font-bold text-cyan-300 mb-2">Scuba Diving</h3>
-                        <p class="text-lg">Using a Self-Contained Underwater Breathing Apparatus to breathe underwater for extended periods, allowing for prolonged exploration.</p>
-                    </div>
+                     <p class="mt-6 md:mt-12 text-lg md:text-xl text-gray-300">Our goal is to explore the science, skills, and mindset behind both.</p>
                 </div>
-                 <p class="mt-12 text-xl text-gray-300">Our goal is to explore the science, skills, and mindset behind both.</p>
             </div>
             
             <!-- Slide 3 -->
             <div class="slide w-full h-full flex flex-col items-center justify-center text-center hidden">
-                 <div class="flex-shrink-0">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-2">Part 1: The Fundamental Science</h2>
-                    <h3 class="text-2xl md:text-3xl font-bold text-cyan-300 mb-2">The Overarching Force: Pressure</h3>
-                    <p class="text-base md:text-lg max-w-3xl mx-auto mb-4">The deeper you go, the greater the pressure. For every 10 meters (33 ft) you descend, pressure increases by 1 Atmosphere (ATM).</p>
-                 </div>
-                 <div class="flex-grow w-full flex items-center justify-center min-h-0">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Pressure-under-water.svg" alt="Pressure vs Depth Diagram" class="object-contain max-w-full max-h-full rounded-lg">
-                 </div>
+                <div class="w-full max-w-6xl mx-auto flex flex-col items-center justify-center flex-grow">
+                     <div class="flex-shrink-0">
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Part 1: The Fundamental Science</h2>
+                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-cyan-300 mb-2">The Overarching Force: Pressure</h3>
+                        <p class="text-base md:text-lg max-w-3xl mx-auto mb-4">The deeper you go, the greater the pressure. For every 10 meters (33 ft) you descend, pressure increases by 1 Atmosphere (ATM).</p>
+                     </div>
+                     <div class="flex-grow w-full flex items-center justify-center min-h-0">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Pressure-under-water.svg" alt="Pressure vs Depth Diagram" class="object-contain max-w-full max-h-full rounded-lg">
+                     </div>
+                </div>
             </div>
 
             <!-- Slide 4 -->
             <div class="slide w-full h-full flex-col items-center justify-center hidden">
-                <h2 class="text-3xl md:text-4xl font-bold text-cyan-300 mb-4">Boyle's Law: The Squeeze</h2>
-                <p class="text-lg italic mb-6">"At a fixed temperature, the volume of a gas is inversely proportional to the pressure."</p>
-                <table class="w-full max-w-2xl text-center bg-gray-700 rounded-lg">
-                    <thead class="bg-gray-600">
-                        <tr>
-                            <th class="p-3 rounded-tl-lg">Depth</th>
-                            <th class="p-3">Pressure</th>
-                            <th class="p-3">Gas Volume</th>
-                            <th class="p-3 rounded-tr-lg">Lung Volume (6L)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-t border-gray-500">
-                            <td class="p-3">0m</td><td class="p-3">1 ATM</td><td class="p-3">1x</td><td class="p-3">6.0 L</td>
-                        </tr>
-                        <tr class="border-t border-gray-500 bg-gray-700/50">
-                            <td class="p-3">10m</td><td class="p-3">2 ATM</td><td class="p-3">1/2x</td><td class="p-3">3.0 L</td>
-                        </tr>
-                        <tr class="border-t border-gray-500">
-                            <td class="p-3">20m</td><td class="p-3">3 ATM</td><td class="p-3">1/3x</td><td class="p-3">2.0 L</td>
-                        </tr>
-                        <tr class="border-t border-gray-500 bg-gray-700/50">
-                            <td class="p-3 rounded-bl-lg">30m</td><td class="p-3">4 ATM</td><td class="p-3">1/4x</td><td class="p-3 rounded-br-lg">1.5 L</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p class="mt-6 text-lg">This affects your Lungs, Ears, Sinuses, and Mask.</p>
+                <div class="w-full max-w-6xl mx-auto text-center">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-300 mb-4">Boyle's Law: The Squeeze</h2>
+                    <p class="text-base md:text-lg italic mb-6">"At a fixed temperature, the volume of a gas is inversely proportional to the pressure."</p>
+                    <table class="w-full max-w-2xl text-center bg-gray-700 rounded-lg mx-auto text-sm sm:text-base">
+                        <thead class="bg-gray-600">
+                            <tr>
+                                <th class="p-2 sm:p-3 rounded-tl-lg">Depth</th>
+                                <th class="p-2 sm:p-3">Pressure</th>
+                                <th class="p-2 sm:p-3">Gas Volume</th>
+                                <th class="p-2 sm:p-3 rounded-tr-lg">Lung Volume (6L)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t border-gray-500">
+                                <td class="p-2 sm:p-3">0m</td><td class="p-2 sm:p-3">1 ATM</td><td class="p-2 sm:p-3">1x</td><td class="p-2 sm:p-3">6.0 L</td>
+                            </tr>
+                            <tr class="border-t border-gray-500 bg-gray-700/50">
+                                <td class="p-2 sm:p-3">10m</td><td class="p-2 sm:p-3">2 ATM</td><td class="p-2 sm:p-3">1/2x</td><td class="p-2 sm:p-3">3.0 L</td>
+                            </tr>
+                            <tr class="border-t border-gray-500">
+                                <td class="p-2 sm:p-3">20m</td><td class="p-2 sm:p-3">3 ATM</td><td class="p-2 sm:p-3">1/3x</td><td class="p-2 sm:p-3">2.0 L</td>
+                            </tr>
+                            <tr class="border-t border-gray-500 bg-gray-700/50">
+                                <td class="p-2 sm:p-3 rounded-bl-lg">30m</td><td class="p-2 sm:p-3">4 ATM</td><td class="p-2 sm:p-3">1/4x</td><td class="p-2 sm:p-3 rounded-br-lg">1.5 L</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="mt-6 text-base md:text-lg">This affects your Lungs, Ears, Sinuses, and Mask.</p>
+                </div>
             </div>
 
             <!-- Slide 5 -->
             <div class="slide w-full h-full flex-col items-center justify-center hidden">
-                <h2 class="text-3xl md:text-4xl font-bold text-cyan-300 mb-4">Archimedes' Principle: Buoyancy</h2>
-                <div class="flex flex-col md:flex-row items-center gap-8">
-                    <div class="text-left max-w-md">
-                        <p class="text-lg italic mb-6">"An object immersed in water experiences a buoyant force equal to the weight of the water it displaces."</p>
-                        <div class="space-y-4">
-                           <div class="bg-gray-700 p-3 rounded-lg"><strong class="text-cyan-300">Positive Buoyancy (Surface):</strong> You float.</div>
-                           <div class="bg-gray-700 p-3 rounded-lg"><strong class="text-cyan-300">Neutral Buoyancy (Mid-water):</strong> You hover.</div>
-                           <div class="bg-gray-700 p-3 rounded-lg"><strong class="text-cyan-300">Negative Buoyancy (Deep):</strong> You sink. This video shows the "freefall" effect.</div>
+                <div class="w-full max-w-7xl mx-auto">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-300 mb-4 lg:mb-8 text-center">Archimedes' Principle: Buoyancy</h2>
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-12">
+                        <div class="text-left max-w-md lg:max-w-lg">
+                            <p class="text-base md:text-lg italic mb-6">"An object immersed in water experiences a buoyant force equal to the weight of the water it displaces."</p>
+                            <div class="space-y-4">
+                               <div class="bg-gray-700 p-3 rounded-lg"><strong class="text-cyan-300">Positive Buoyancy (Surface):</strong> You float.</div>
+                               <div class="bg-gray-700 p-3 rounded-lg"><strong class="text-cyan-300">Neutral Buoyancy (Mid-water):</strong> You hover.</div>
+                               <div class="bg-gray-700 p-3 rounded-lg"><strong class="text-cyan-300">Negative Buoyancy (Deep):</strong> You sink. This video shows the "freefall" effect.</div>
+                            </div>
                         </div>
+                        <iframe class="w-full max-w-sm md:max-w-md lg:max-w-lg aspect-video rounded-lg" 
+                                src="https://www.youtube.com/embed/MFUzWd5-dVo" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
                     </div>
-                    <iframe class="w-full max-w-sm aspect-video rounded-lg" 
-                            src="https://www.youtube.com/embed/MFUzWd5-dVo" 
-                            title="YouTube video player" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
                 </div>
             </div>
 
             <!-- Slide 6 -->
             <div class="slide w-full h-full flex-col items-center justify-center hidden">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">Part 2: A Deep Dive into Freediving</h2>
-                <h3 class="text-2xl md:text-4xl font-bold text-cyan-300 mb-8">Urge to Breathe vs. Blackout</h3>
-                <div class="grid md:grid-cols-2 gap-8 text-left max-w-3xl">
-                    <div class="bg-red-900/50 border border-red-500 p-6 rounded-lg">
-                        <h3 class="text-2xl font-bold text-red-300 mb-2">Urge to Breathe</h3>
-                        <p><strong class="text-white">Cause:</strong> High CO₂ (Hypercapnia)</p>
-                        <p><strong class="text-white">What it is:</strong> Your body's early warning system. It's your friend!</p>
+                <div class="w-full max-w-6xl mx-auto text-center">
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4">Part 2: A Deep Dive into Freediving</h2>
+                    <h3 class="text-xl sm:text-2xl md:text-4xl font-bold text-cyan-300 mb-8">Urge to Breathe vs. Blackout</h3>
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-8 text-left max-w-3xl mx-auto">
+                        <div class="bg-red-900/50 border border-red-500 p-4 md:p-6 rounded-lg">
+                            <h3 class="text-xl md:text-2xl font-bold text-red-300 mb-2">Urge to Breathe</h3>
+                            <p><strong class="text-white">Cause:</strong> High CO₂ (Hypercapnia)</p>
+                            <p><strong class="text-white">What it is:</strong> Your body's early warning system. It's your friend!</p>
+                        </div>
+                        <div class="bg-red-900/80 border border-red-400 p-4 md:p-6 rounded-lg">
+                            <h3 class="text-xl md:text-2xl font-bold text-red-300 mb-2">Blackout (L.O.C.)</h3>
+                            <p><strong class="text-white">Cause:</strong> Low O₂ (Hypoxia)</p>
+                            <p><strong class="text-white">What it is:</strong> A "circuit breaker" that happens without warning. The ultimate danger.</p>
+                        </div>
                     </div>
-                    <div class="bg-red-900/80 border border-red-400 p-6 rounded-lg">
-                        <h3 class="text-2xl font-bold text-red-300 mb-2">Blackout (L.O.C.)</h3>
-                        <p><strong class="text-white">Cause:</strong> Low O₂ (Hypoxia)</p>
-                        <p><strong class="text-white">What it is:</strong> A "circuit breaker" that happens without warning. The ultimate danger.</p>
-                    </div>
+                    <p class="mt-8 text-lg md:text-xl font-bold">Key Takeaway: The Urge to Breathe should happen LONG before a blackout is possible.</p>
                 </div>
-                <p class="mt-8 text-xl font-bold">Key Takeaway: The Urge to Breathe should happen LONG before a blackout is possible.</p>
             </div>
             
             <!-- Slide 7 -->
             <div class="slide w-full h-full flex-col items-center justify-center text-center hidden">
-                <h2 class="text-3xl md:text-5xl font-bold text-red-400 mb-8">The #1 Enemy: Hyperventilation</h2>
-                <p class="text-xl max-w-3xl mb-6">Breathing fast/deep before a dive is extremely dangerous. It flushes out CO₂, silencing your "urge to breathe" alarm without adding more oxygen.</p>
-                <div class="bg-gray-700 p-6 rounded-lg max-w-2xl">
-                    <p class="text-lg">This can lead to your oxygen dropping to critical levels <strong class="text-red-400">before</strong> you get any signal to surface, resulting in a blackout with no warning.</p>
+                <div class="w-full max-w-6xl mx-auto">
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-red-400 mb-8">The #1 Enemy: Hyperventilation</h2>
+                    <p class="text-lg md:text-xl max-w-3xl mb-6 mx-auto">Breathing fast/deep before a dive is extremely dangerous. It flushes out CO₂, silencing your "urge to breathe" alarm without adding more oxygen.</p>
+                    <div class="bg-gray-700 p-4 md:p-6 rounded-lg max-w-2xl mx-auto">
+                        <p class="text-base md:text-lg">This can lead to your oxygen dropping to critical levels <strong class="text-red-400">before</strong> you get any signal to surface, resulting in a blackout with no warning.</p>
+                    </div>
+                    <p class="mt-6 text-base md:text-lg font-bold">If you feel dizzy or tingling, DO NOT DIVE.</p>
                 </div>
-                <p class="mt-6 text-lg font-bold">If you feel dizzy or tingling, DO NOT DIVE.</p>
             </div>
 
             <!-- Slide 8 -->
             <div class="slide w-full h-full flex-col items-center justify-center hidden">
-                <h2 class="text-3xl md:text-4xl font-bold text-cyan-300 mb-6">The Superpower: Mammalian Dive Reflex</h2>
-                <p class="text-lg max-w-3xl text-center mb-6">An incredible, innate set of reflexes for breath-holding, triggered by face immersion in water and holding your breath.</p>
-                <div class="grid md:grid-cols-3 gap-4 text-center max-w-4xl">
-                    <div class="bg-gray-700 p-4 rounded-lg">
-                        <h3 class="font-bold text-xl text-cyan-300">Bradycardia</h3>
-                        <p>Heart rate slows dramatically to conserve oxygen.</p>
-                    </div>
-                    <div class="bg-gray-700 p-4 rounded-lg">
-                        <h3 class="font-bold text-xl text-cyan-300">Vasoconstriction</h3>
-                        <p>Blood shunts from extremities to vital organs.</p>
-                    </div>
-                    <div class="bg-gray-700 p-4 rounded-lg">
-                        <h3 class="font-bold text-xl text-cyan-300">Spleen Effect</h3>
-                        <p>Spleen releases a reserve of oxygen-rich red blood cells.</p>
+                <div class="w-full max-w-6xl mx-auto text-center">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-300 mb-6">The Superpower: Mammalian Dive Reflex</h2>
+                    <p class="text-base md:text-lg max-w-3xl text-center mb-6 mx-auto">An incredible, innate set of reflexes for breath-holding, triggered by face immersion in water and holding your breath.</p>
+                    <div class="grid md:grid-cols-3 gap-4 text-center max-w-4xl mx-auto">
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg md:text-xl text-cyan-300">Bradycardia</h3>
+                            <p class="text-sm md:text-base">Heart rate slows dramatically to conserve oxygen.</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg md:text-xl text-cyan-300">Vasoconstriction</h3>
+                            <p class="text-sm md:text-base">Blood shunts from extremities to vital organs.</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg md:text-xl text-cyan-300">Spleen Effect</h3>
+                            <p class="text-sm md:text-base">Spleen releases a reserve of oxygen-rich red blood cells.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Slide 9 -->
             <div class="slide w-full h-full flex-col items-center justify-center hidden">
-                <h2 class="text-3xl md:text-4xl font-bold text-cyan-300 mb-6 w-full text-center">The Skill: Equalization</h2>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-6 w-full">
-                    <div class="text-left md:w-1/2">
-                        <p class="text-lg mb-4">You must actively add air to your middle ear via the Eustachian Tube to counteract the "squeeze".</p>
-                        <div class="mb-4">
-                            <h3 class="font-bold text-xl text-red-400">Valsalva (Scuba Way)</h3>
-                            <p>Pinching nose and blowing from lungs. Inefficient for freediving.</p>
+                <div class="w-full max-w-7xl mx-auto">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-300 mb-6 w-full text-center">The Skill: Equalization</h2>
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-12 w-full">
+                        <div class="text-left md:w-1/2 max-w-lg">
+                            <p class="text-base md:text-lg mb-4">You must actively add air to your middle ear via the Eustachian Tube to counteract the "squeeze".</p>
+                            <div class="mb-4">
+                                <h3 class="font-bold text-lg md:text-xl text-red-400">Valsalva (Scuba Way)</h3>
+                                <p class="text-sm md:text-base">Pinching nose and blowing from lungs. Inefficient for freediving.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg md:text-xl text-green-400">Frenzel (Freediving Way)</h3>
+                                <p class="text-sm md:text-base">Using the tongue as a piston to push air from the mouth/throat. More controlled, efficient, and relaxed.</p>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="font-bold text-xl text-green-400">Frenzel (Freediving Way)</h3>
-                            <p>Using the tongue as a piston to push air from the mouth/throat. More controlled, efficient, and relaxed.</p>
+                        <div class="md:w-1/2 flex items-center justify-center">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Anatomy_of_the_Human_Ear.svg" alt="Anatomy of the Human Ear" class="rounded-lg shadow-lg bg-white p-2 w-full max-w-xs md:max-w-sm h-auto object-contain">
                         </div>
-                    </div>
-                    <div class="md:w-1/2 flex items-center justify-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Anatomy_of_the_Human_Ear.svg" alt="Anatomy of the Human Ear" class="rounded-lg shadow-lg bg-white p-2 w-full max-w-xs h-auto object-contain">
                     </div>
                 </div>
             </div>
 
             <!-- Slide 10 -->
             <div class="slide w-full h-full flex-col items-center justify-center hidden">
-                <h2 class="text-3xl md:text-4xl font-bold text-cyan-300 mb-6">The Process: A Safe Freedive</h2>
-                <ol class="list-decimal list-inside text-left text-lg space-y-3 max-w-2xl">
-                    <li><strong class="text-cyan-300">Relaxation ("Breathe-up"):</strong> Calm, natural breathing.</li>
-                    <li><strong class="text-cyan-300">One Full Breath:</strong> A single, deep, relaxed inhalation.</li>
-                    <li><strong class="text-cyan-300">Duck Dive:</strong> Efficient, head-first entry.</li>
-                    <li><strong class="text-cyan-300">The Dive:</strong> Relax, equalize early and often.</li>
-                    <li><strong class="text-cyan-300">The Ascent:</strong> Stay streamlined, let buoyancy help.</li>
-                    <li><strong class="text-cyan-300">Recovery Breathing:</strong> Sharp "Hook Breaths" to re-oxygenate.</li>
-                    <li class="font-black text-2xl text-red-400 mt-4">NEVER DIVE ALONE. Your buddy is your lifeline.</li>
-                </ol>
+                <div class="w-full max-w-6xl mx-auto text-center">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-300 mb-6">The Process: A Safe Freedive</h2>
+                    <ol class="list-decimal list-inside text-left text-base md:text-lg space-y-3 max-w-2xl mx-auto">
+                        <li><strong class="text-cyan-300">Relaxation ("Breathe-up"):</strong> Calm, natural breathing.</li>
+                        <li><strong class="text-cyan-300">One Full Breath:</strong> A single, deep, relaxed inhalation.</li>
+                        <li><strong class="text-cyan-300">Duck Dive:</strong> Efficient, head-first entry.</li>
+                        <li><strong class="text-cyan-300">The Dive:</strong> Relax, equalize early and often.</li>
+                        <li><strong class="text-cyan-300">The Ascent:</strong> Stay streamlined, let buoyancy help.</li>
+                        <li><strong class="text-cyan-300">Recovery Breathing:</strong> Sharp "Hook Breaths" to re-oxygenate.</li>
+                        <li class="font-black text-xl md:text-2xl text-red-400 mt-4">NEVER DIVE ALONE. Your buddy is your lifeline.</li>
+                    </ol>
+                </div>
             </div>
 
             <!-- Slide 11 -->
             <div class="slide w-full h-full flex flex-col items-center justify-center text-center hidden">
-                <div class="flex-shrink-0">
-                    <h2 class="text-3xl md:text-5xl font-bold mb-2">Part 3: Submerging into Scuba</h2>
-                    <h3 class="text-2xl md:text-4xl font-bold text-cyan-300 mb-4">The Scuba System</h3>
-                </div>
-                <div class="flex-grow w-full flex items-center justify-center min-h-0">
-                    <iframe src="https://drive.google.com/file/d/1Ash3Pj4LmrG6lCrrVcXMwJGgyDlVK5Yk/preview" class="rounded-lg shadow-lg w-full max-w-3xl h-full" allow="autoplay"></iframe>
+                <div class="w-full max-w-6xl mx-auto flex flex-col items-center justify-center flex-grow">
+                    <div class="flex-shrink-0">
+                        <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-2">Part 3: Submerging into Scuba</h2>
+                        <h3 class="text-xl sm:text-2xl md:text-4xl font-bold text-cyan-300 mb-4">The Scuba System</h3>
+                    </div>
+                    <div class="flex-grow w-full flex items-center justify-center min-h-0">
+                        <iframe src="https://drive.google.com/file/d/1Ash3Pj4LmrG6lCrrVcXMwJGgyDlVK5Yk/preview" class="rounded-lg shadow-lg w-full max-w-3xl h-full" allow="autoplay"></iframe>
+                    </div>
                 </div>
             </div>
 
             <!-- Slide 12 -->
             <div class="slide w-full h-full flex-col items-center justify-center text-center hidden">
-                <h2 class="text-3xl md:text-5xl font-bold text-red-400 mb-8">The #1 Rule of Scuba</h2>
-                <div class="bg-red-900/80 border-4 border-red-500 p-8 rounded-lg max-w-3xl">
-                    <h3 class="text-5xl font-black tracking-wider">NEVER, EVER HOLD YOUR BREATH.</h3>
+                <div class="w-full max-w-6xl mx-auto">
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-red-400 mb-8">The #1 Rule of Scuba</h2>
+                    <div class="bg-red-900/80 border-4 border-red-500 p-4 sm:p-8 rounded-lg max-w-3xl mx-auto">
+                        <h3 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-wider">NEVER, EVER HOLD YOUR BREATH.</h3>
+                    </div>
+                    <p class="mt-8 text-lg md:text-xl max-w-3xl mx-auto"><strong>Why? Reverse Boyle's Law.</strong> Air taken at depth expands on ascent. Holding your breath can cause a catastrophic Lung Overexpansion Injury.</p>
                 </div>
-                <p class="mt-8 text-xl max-w-3xl"><strong>Why? Reverse Boyle's Law.</strong> Air taken at depth expands on ascent. Holding your breath can cause a catastrophic Lung Overexpansion Injury.</p>
             </div>
 
             <!-- Slide 13 -->
             <div class="slide w-full h-full flex-col items-center justify-center hidden">
-                <h2 class="text-3xl md:text-4xl font-bold text-cyan-300 mb-6">The Invisible Gas: Nitrogen</h2>
-                <p class="text-lg max-w-3xl text-center mb-6">Air is ~79% Nitrogen. Under pressure, it causes two major issues for scuba divers:</p>
-                <div class="grid md:grid-cols-2 gap-8 text-left max-w-4xl">
-                    <div class="bg-gray-700 p-6 rounded-lg">
-                        <h3 class="text-2xl font-bold text-cyan-300 mb-2">Nitrogen Narcosis</h3>
-                        <p>An intoxicating effect at depth ("feeling narc'd"). Impairs judgment. Solved by ascending.</p>
-                    </div>
-                    <div class="bg-gray-700 p-6 rounded-lg">
-                        <h3 class="text-2xl font-bold text-cyan-300 mb-2">Decompression Sickness ("The Bends")</h3>
-                        <p>Nitrogen bubbles forming in tissues from ascending too fast. Prevented by slow ascents and safety stops.</p>
+                <div class="w-full max-w-6xl mx-auto text-center">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-300 mb-6">The Invisible Gas: Nitrogen</h2>
+                    <p class="text-base md:text-lg max-w-3xl text-center mb-6 mx-auto">Air is ~79% Nitrogen. Under pressure, it causes two major issues for scuba divers:</p>
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-8 text-left max-w-4xl mx-auto">
+                        <div class="bg-gray-700 p-4 md:p-6 rounded-lg">
+                            <h3 class="text-xl md:text-2xl font-bold text-cyan-300 mb-2">Nitrogen Narcosis</h3>
+                            <p class="text-sm md:text-base">An intoxicating effect at depth ("feeling narc'd"). Impairs judgment. Solved by ascending.</p>
+                        </div>
+                        <div class="bg-gray-700 p-4 md:p-6 rounded-lg">
+                            <h3 class="text-xl md:text-2xl font-bold text-cyan-300 mb-2">Decompression Sickness ("The Bends")</h3>
+                            <p class="text-sm md:text-base">Nitrogen bubbles forming in tissues from ascending too fast. Prevented by slow ascents and safety stops.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Slide 14 -->
             <div class="slide w-full h-full flex-col items-center justify-center hidden">
-                <h2 class="text-3xl md:text-4xl font-bold text-red-400 mb-6">The Main Risk: Hypoxia vs. Decompression Sickness</h2>
-                <div class="grid md:grid-cols-2 gap-6 text-left max-w-4xl w-full">
-                    <div class="bg-gray-700 p-4 rounded-lg border-2 border-cyan-500">
-                        <h3 class="text-2xl font-bold text-cyan-300 mb-3">Hypoxia (Freediving)</h3>
-                        <ul class="list-disc list-inside space-y-2">
-                            <li><strong class="text-white">What:</strong> Critically low oxygen to the brain.</li>
-                            <li><strong class="text-white">Cause:</strong> Holding your breath past your limit.</li>
-                            <li><strong class="text-white">When:</strong> Can happen suddenly, often near the surface on ascent.</li>
-                            <li><strong class="text-white">Prevention:</strong> Never hyperventilate, listen to your body, never dive alone.</li>
-                        </ul>
+                <div class="w-full max-w-7xl mx-auto">
+                    <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-red-400 mb-6 text-center">The Main Risk: Hypoxia vs. Decompression Sickness</h2>
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-6 text-left max-w-5xl w-full mx-auto">
+                        <div class="bg-gray-700 p-4 rounded-lg border-2 border-cyan-500">
+                            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-cyan-300 mb-3">Hypoxia (Freediving)</h3>
+                            <ul class="list-disc list-inside space-y-2 text-sm sm:text-base">
+                                <li><strong class="text-white">What:</strong> Critically low oxygen to the brain.</li>
+                                <li><strong class="text-white">Cause:</strong> Holding your breath past your limit.</li>
+                                <li><strong class="text-white">When:</strong> Can happen suddenly, often near the surface on ascent.</li>
+                                <li><strong class="text-white">Prevention:</strong> Never hyperventilate, listen to your body, never dive alone.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-700 p-4 rounded-lg border-2 border-orange-500">
+                            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-orange-400 mb-3">Decompression Sickness (Scuba)</h3>
+                            <ul class="list-disc list-inside space-y-2 text-sm sm:text-base">
+                                <li><strong class="text-white">What:</strong> Nitrogen bubbles forming in blood/tissues.</li>
+                                <li><strong class="text-white">Cause:</strong> Ascending too quickly after absorbing nitrogen at depth.</li>
+                                <li><strong class="text-white">When:</strong> Usually after the dive, can be delayed for hours.</li>
+                                <li><strong class="text-white">Prevention:</strong> Slow ascents, safety stops, following dive computer limits.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="bg-gray-700 p-4 rounded-lg border-2 border-orange-500">
-                        <h3 class="text-2xl font-bold text-orange-400 mb-3">Decompression Sickness (Scuba)</h3>
-                        <ul class="list-disc list-inside space-y-2">
-                            <li><strong class="text-white">What:</strong> Nitrogen bubbles forming in blood/tissues.</li>
-                            <li><strong class="text-white">Cause:</strong> Ascending too quickly after absorbing nitrogen at depth.</li>
-                            <li><strong class="text-white">When:</strong> Usually after the dive, can be delayed for hours.</li>
-                            <li><strong class="text-white">Prevention:</strong> Slow ascents, safety stops, following dive computer limits.</li>
-                        </ul>
-                    </div>
+                    <p class="mt-6 text-base md:text-lg text-center">Both are serious, but caused by completely different physiological processes.</p>
                 </div>
-                <p class="mt-6 text-lg">Both are serious, but caused by completely different physiological processes.</p>
             </div>
             
             <!-- Slide 15 -->
             <div class="slide w-full h-full flex-col items-center justify-center hidden">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">Part 4: The Comparison</h2>
-                <table class="w-full max-w-4xl text-left bg-gray-700 rounded-lg text-sm md:text-base">
-                    <thead class="bg-gray-600">
-                        <tr>
-                            <th class="p-3 rounded-tl-lg">Feature</th>
-                            <th class="p-3 text-cyan-300">Freediving</th>
-                            <th class="p-3 text-cyan-300 rounded-tr-lg">Scuba Diving</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-t border-gray-500"><td class="p-2 font-bold">Breathing</td><td>One single breath</td><td>Continuous breathing</td></tr>
-                        <tr class="border-t border-gray-500 bg-gray-700/50"><td class="p-2 font-bold">Goal</td><td>Internal challenge, silence</td><td>External exploration</td></tr>
-                        <tr class="border-t border-gray-500"><td class="p-2 font-bold">Equipment</td><td>Minimalist</td><td>Life support system</td></tr>
-                        <tr class="border-t border-gray-500 bg-gray-700/50"><td class="p-2 font-bold">Movement</td><td>Fluid, fast, silent</td><td>Slower, bubbles</td></tr>
-                        <tr class="border-t border-gray-500"><td class="p-2 font-bold">Primary Risks</td><td class="text-red-400">Hypoxia / Blackout</td><td class="text-red-400">DCS / Lung Injury</td></tr>
-                        <tr class="border-t border-gray-500 bg-gray-700/50"><td class="p-2 font-bold">Bottom Time</td><td>Short (1-4 mins)</td><td>Long (30-60+ mins)</td></tr>
-                        <tr class="border-t border-gray-500"><td class="p-2 font-bold rounded-bl-lg">Mindset</td><td>Meditation, body awareness</td><td class="rounded-br-lg">Situational awareness</td></tr>
-                    </tbody>
-                </table>
+                <div class="w-full max-w-6xl mx-auto">
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 text-center">Part 4: The Comparison</h2>
+                    <table class="w-full max-w-4xl text-left bg-gray-700 rounded-lg text-xs sm:text-sm md:text-base mx-auto">
+                        <thead class="bg-gray-600">
+                            <tr>
+                                <th class="p-2 md:p-3 rounded-tl-lg">Feature</th>
+                                <th class="p-2 md:p-3 text-cyan-300">Freediving</th>
+                                <th class="p-2 md:p-3 text-cyan-300 rounded-tr-lg">Scuba Diving</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t border-gray-500"><td class="p-1 md:p-2 font-bold">Breathing</td><td>One single breath</td><td>Continuous breathing</td></tr>
+                            <tr class="border-t border-gray-500 bg-gray-700/50"><td class="p-1 md:p-2 font-bold">Goal</td><td>Internal challenge, silence</td><td>External exploration</td></tr>
+                            <tr class="border-t border-gray-500"><td class="p-1 md:p-2 font-bold">Equipment</td><td>Minimalist</td><td>Life support system</td></tr>
+                            <tr class="border-t border-gray-500 bg-gray-700/50"><td class="p-1 md:p-2 font-bold">Movement</td><td>Fluid, fast, silent</td><td>Slower, bubbles</td></tr>
+                            <tr class="border-t border-gray-500"><td class="p-1 md:p-2 font-bold">Primary Risks</td><td class="text-red-400">Hypoxia / Blackout</td><td class="text-red-400">DCS / Lung Injury</td></tr>
+                            <tr class="border-t border-gray-500 bg-gray-700/50"><td class="p-1 md:p-2 font-bold">Bottom Time</td><td>Short (1-4 mins)</td><td>Long (30-60+ mins)</td></tr>
+                            <tr class="border-t border-gray-500"><td class="p-1 md:p-2 font-bold rounded-bl-lg">Mindset</td><td>Meditation, body awareness</td><td class="rounded-br-lg">Situational awareness</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- Slide 16 -->
             <div class="slide w-full h-full flex-col items-center justify-center text-center hidden">
-                <h2 class="text-3xl md:text-5xl font-bold text-cyan-300 mb-4">✨ Dive Site Assistant</h2>
-                <p class="text-lg mb-4">Enter a country or region to get dive site ideas!</p>
-                <div class="flex items-center space-x-2">
-                    <input type="text" id="location-input" placeholder="e.g., Egypt, Thailand, Mexico" class="bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
-                    <button id="get-sites-btn" class="bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-2 px-4 rounded-lg">Get Dive Site Ideas</button>
-                </div>
-                <div id="sites-result" class="mt-4 text-left max-w-2xl bg-gray-700/50 p-4 rounded-lg h-48 overflow-y-auto">
-                    <!-- Gemini results will be displayed here -->
+                <div class="w-full max-w-6xl mx-auto">
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-cyan-300 mb-4">✨ Dive Site Assistant</h2>
+                    <p class="text-base md:text-lg mb-4">Enter a country or region to get dive site ideas!</p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-2">
+                        <input type="text" id="location-input" placeholder="e.g., Egypt, Thailand, Mexico" class="bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 w-full sm:w-auto">
+                        <button id="get-sites-btn" class="bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-2 px-4 rounded-lg w-full sm:w-auto">Get Dive Site Ideas</button>
+                    </div>
+                    <div id="sites-result" class="mt-4 text-left max-w-2xl bg-gray-700/50 p-4 rounded-lg h-48 overflow-y-auto mx-auto">
+                        <!-- Gemini results will be displayed here -->
+                    </div>
                 </div>
             </div>
             
             <!-- Slide 17 -->
             <div class="slide w-full h-full flex-col items-center justify-center text-center hidden">
-                 <h1 class="text-6xl md:text-8xl font-black text-cyan-300 tracking-tight">Q&A</h1>
-                 <p class="mt-4 text-2xl md:text-3xl text-gray-300">Any Questions?</p>
+                <div class="w-full max-w-6xl mx-auto">
+                     <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-cyan-300 tracking-tight">Q&A</h1>
+                     <p class="mt-4 text-xl sm:text-2xl md:text-4xl text-gray-300">Any Questions?</p>
+                </div>
             </div>
 
             <!-- Slide 18 -->
             <div class="slide w-full h-full flex-col items-center justify-center text-center hidden">
-                 <h1 class="text-4xl md:text-5xl font-bold text-cyan-300 mb-6">✨ Safety Quiz Generator</h1>
-                 <button id="get-quiz-btn" class="bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-3 px-6 rounded-lg text-xl mb-6">Generate a Safety Quiz Question</button>
-                 <div id="quiz-result" class="mt-4 text-left max-w-2xl bg-gray-700/50 p-6 rounded-lg min-h-[150px]">
-                    <!-- Gemini quiz question will be displayed here -->
-                 </div>
+                <div class="w-full max-w-6xl mx-auto">
+                     <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold text-cyan-300 mb-6">✨ Safety Quiz Generator</h1>
+                     <button id="get-quiz-btn" class="bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-3 px-6 rounded-lg text-lg md:text-xl mb-6">Generate a Safety Quiz Question</button>
+                     <div id="quiz-result" class="mt-4 text-left max-w-2xl bg-gray-700/50 p-4 md:p-6 rounded-lg min-h-[150px] mx-auto">
+                         <!-- Gemini quiz question will be displayed here -->
+                     </div>
+                </div>
             </div>
         </div>
 
         <!-- Navigation -->
-        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gray-900/50 flex items-center justify-between px-8">
-            <div class="text-lg font-bold">
+        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gray-900/50 flex items-center justify-between px-4 sm:px-8">
+            <div class="text-base sm:text-lg font-bold">
                 <span id="current-slide-num">1</span> / <span id="total-slides-num">18</span>
             </div>
             <div>
