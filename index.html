@@ -29,15 +29,19 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        /* Ensure the container takes up the full calculated height */
+        #presentation-container {
+             height: 100%;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white flex items-center justify-center h-screen">
 
     <!-- Main container now uses screen width/height for full compatibility -->
-    <div id="presentation-container" class="w-screen h-screen bg-gray-800 flex flex-col relative overflow-hidden">
+    <div id="presentation-container" class="w-screen bg-gray-800 flex flex-col relative overflow-hidden">
         
         <!-- Slides wrapper with responsive padding. flex-grow ensures it takes up available space -->
-        <div id="slides-wrapper" class="flex-grow flex items-center justify-center p-4 sm:p-6 md:p-8 overflow-y-auto">
+        <div id="slides-wrapper" class="flex-grow flex items-center justify-center p-4 sm:p-6 md:p-8 overflow-y-auto min-h-0">
             <!-- Slide 1 -->
             <div class="slide w-full h-full flex flex-col items-center justify-center text-center">
                 <!-- Content wrapper to constrain width on very large screens -->
@@ -424,6 +428,21 @@
 
 
         document.addEventListener('DOMContentLoaded', () => {
+            const presentationContainer = document.getElementById('presentation-container');
+
+            // --- Function to handle viewport height ---
+            function setViewportHeight() {
+                // Use window.innerHeight to get the actual visible height
+                presentationContainer.style.height = `${window.innerHeight}px`;
+            }
+
+            // Set the height on initial load
+            setViewportHeight();
+
+            // Also set the height on resize (e.g., orientation change)
+            window.addEventListener('resize', setViewportHeight);
+
+
             const slides = document.querySelectorAll('.slide');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
