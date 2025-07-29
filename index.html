@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Define a CSS variable for the viewport height unit */
+            --vh: 1vh;
+        }
         body {
             font-family: 'Inter', sans-serif;
             /* Prevent scrolling on the body itself */
@@ -29,16 +33,16 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        /* Ensure the container takes up the full calculated height */
+        /* The container now uses the JS-calculated height variable */
         #presentation-container {
-             height: 100%;
+             height: calc(var(--vh, 1vh) * 100);
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white flex items-center justify-center h-screen">
+<body class="bg-gray-900 text-white flex items-center justify-center">
 
     <!-- Main container now uses screen width/height for full compatibility -->
-    <div id="presentation-container" class="w-screen bg-gray-800 flex flex-col relative overflow-hidden">
+    <div id="presentation-container" class="w-screen bg-gray-800 flex flex-col overflow-hidden">
         
         <!-- Slides wrapper with responsive padding. flex-grow ensures it takes up available space -->
         <div id="slides-wrapper" class="flex-grow flex items-center justify-center p-4 sm:p-6 md:p-8 overflow-y-auto min-h-0">
@@ -428,19 +432,19 @@
 
 
         document.addEventListener('DOMContentLoaded', () => {
-            const presentationContainer = document.getElementById('presentation-container');
+            
+            // --- Mobile Viewport Height Fix ---
+            const setViewportHeight = () => {
+                // This function calculates the actual inner height of the window,
+                // ignoring the mobile browser UI, and sets it as a CSS variable.
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            };
 
-            // --- Function to handle viewport height ---
-            function setViewportHeight() {
-                // Use window.innerHeight to get the actual visible height
-                presentationContainer.style.height = `${window.innerHeight}px`;
-            }
-
-            // Set the height on initial load
-            setViewportHeight();
-
-            // Also set the height on resize (e.g., orientation change)
+            // Set the height on initial load and whenever the window is resized.
             window.addEventListener('resize', setViewportHeight);
+            setViewportHeight();
+            // --- End of Fix ---
 
 
             const slides = document.querySelectorAll('.slide');
